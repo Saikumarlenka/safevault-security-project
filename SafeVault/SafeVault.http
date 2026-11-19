@@ -1,0 +1,42 @@
+@baseUrl = https://localhost:7290
+@adminUsername = AdminOne
+@adminPassword = replace-with-your-bootstrap-admin-password
+@requestToken = copy-the-request-token-from-the-GET-root-response
+
+### Get registration form and antiforgery token
+GET {{baseUrl}}/
+
+### Register a standard user (first copy the form's request token above)
+POST {{baseUrl}}/users
+Content-Type: application/x-www-form-urlencoded
+
+__RequestVerificationToken={{requestToken}}&username=SampleUser&email=sample%40example.com&password=SamplePassword%21123
+
+### Log in as the bootstrapped administrator
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "username": "{{adminUsername}}",
+  "password": "{{adminPassword}}"
+}
+
+### View current identity
+GET {{baseUrl}}/profile
+
+### Access administrator dashboard
+GET {{baseUrl}}/admin/dashboard
+
+### Assign a role to an existing account
+PUT {{baseUrl}}/admin/users/SampleUser/role
+Content-Type: application/json
+
+{
+  "role": "Admin"
+}
+
+### Log out
+POST {{baseUrl}}/logout
+
+### OpenAPI document
+GET {{baseUrl}}/openapi/v1.json

@@ -1,0 +1,16 @@
+# Build and IDE output
+**/bin/
+**/obj/
+.vs/
+.idea/
+*.user
+*.suo
+
+# Local database and secrets
+*.db
+*.db-shm
+*.db-wal
+secrets.json
+.env
+.env.*
+!.env.example
