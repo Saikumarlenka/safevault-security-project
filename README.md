@@ -1,4 +1,4 @@
-# SafeVault
+# SafeVault security project
 
 SafeVault uses ASP.NET Core's `PasswordHasher<TUser>` to store password hashes, secure HTTP-only cookies for sessions, and role-based authorization for administrator routes. New public registrations are always assigned the `User` role.
 
